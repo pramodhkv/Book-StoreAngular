@@ -1,0 +1,47 @@
+<div class="container mt-3">
+  <div class="row" *ngFor="let book of myBooks; let i = index;">
+    <div class="col-xs-12" style="width: 40rem;">
+      <br>
+      <a style="cursor: pointer;" class="list-group-item clearfix">
+
+        <div class="pull-left justify-content-between">
+          <h4 class="list-group-item-heading">{{ book.name }}</h4>
+          <p class="list-group-item-text">{{ book.name }}</p>
+        </div>
+        <span class="pull-right">
+          <img [src]="book.imagePath" alt="{{ book.name }}" class="img-responsive" style="height: 130px;">
+          <button class="btn btn-primary float-right mt-3" (click)="onShowDetails(i, detailsModal)">Show
+            Details</button>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #detailsModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Book Details</h5>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+            <p>{{bookView.bookName}}</p>
+
+            <br>
+        
+            <p class="lead text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis doloribus. Itaque dolorem nisi praesentium explicabo temporibus, doloremque eaque nemo?</p>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
+  </div>
+</ng-template>
